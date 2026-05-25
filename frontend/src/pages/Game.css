@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #0a0a0a;
+    color: #a3abe8;
+}
+
+.settings-screen, .question-screen, .result-screen {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #1a1a1a;
+    border: 1px solid #5959c5;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+}
+
+h1, h2, h3 {
+    color: #5959c5;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+button {
+    background: #2a2a2a;
+    color: #a3a9e8;
+    border: 1px solid #5969c5;
+    padding: 12px 20px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: #6b59c5;
+    color: #0a0a0a;
+    border-color: #a7a3e8;
+}
+
+input {
+    background: #2a2a2a;
+    border: 1px solid #595ec5;
+    padding: 10px;
+    color: #a4a3e8;
+    font-family: 'Georgia', serif;
+    margin: 10px 0;
+}
+
+.answers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.answer-button {
+    text-align: left;
+    background: #1a1a1a;
+}
+
+.stats-container {
+    background: #0a0a0a;
+    border: 1px solid #6259c5;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.stats-container ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.stats-container li {
+    padding: 5px 0;
+    color: #5c5ab8;
+}
+
+.loading-screen {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 20px;
+    color: #595bc5;
+}
+
+.exit-button {
+    float: right;
+    background: #4f1717;
+    border-color: #aa1818;
+}
+
+.exit-button:hover {
+    background: #85c1e4;
+    border-color: #fd0000;
+}
+
+.question-counter {
+    font-size: 14px;
+    color: #675ab8;
+    margin-bottom: 10px;
+}
+
+.rounds-input label {
+    display: block;
+    margin: 10px 0;
+}
+
+.rounds-input input {
+    width: 100%;
+}
+
+.start-button {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 18px;
+}

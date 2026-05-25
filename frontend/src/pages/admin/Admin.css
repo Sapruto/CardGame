@@ -1,0 +1,128 @@
+.metrics-screen,
+.characters-screen,
+.cards-screen,
+.answers-screen {
+    border: 1px solid #5959c5;
+    margin: 10px;
+    padding: 10px;
+    background: #1a1a1a;
+    color: #a3abe8;
+}
+
+.metrics-screen h3,
+.characters-screen h3,
+.cards-screen h3,
+.answers-screen h3 {
+    color: #5959c5;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.metrics-screen input,
+.characters-screen input,
+.cards-screen input,
+.answers-screen input {
+    background: #2a2a2a;
+    border: 1px solid #5959c5;
+    padding: 10px;
+    color: #a3abe8;
+    font-family: 'Georgia', serif;
+    margin: 10px 0;
+}
+
+.metrics-screen select,
+.characters-screen select,
+.cards-screen select {
+    background: #2a2a2a;
+    border: 1px solid #5959c5;
+    padding: 10px;
+    color: #a3abe8;
+    font-family: 'Georgia', serif;
+    margin: 10px 0;
+}
+
+.metrics-screen button,
+.characters-screen button,
+.cards-screen button,
+.answers-screen button {
+    background: #2a2a2a;
+    color: #a3abe8;
+    border: 1px solid #5959c5;
+    padding: 12px 20px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 5px;
+}
+
+.metrics-screen button:hover,
+.characters-screen button:hover,
+.cards-screen button:hover,
+.answers-screen button:hover {
+    background: #5959c5;
+    color: #0a0a0a;
+    border-color: #a3abe8;
+}
+
+.metrics-screen ul,
+.characters-screen ul,
+.cards-screen ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.metrics-screen li,
+.characters-screen li,
+.cards-screen li {
+    padding: 8px;
+    margin: 5px 0;
+    background: #0a0a0a;
+    border: 1px solid #5959c5;
+    color: #a3abe8;
+}
+
+.edit-form {
+    margin-top: 10px;
+    border: 1px solid #5959c5;
+    padding: 10px;
+    background: #0a0a0a;
+}
+
+.edit-form h4 {
+    color: #5959c5;
+    margin-bottom: 10px;
+}
+
+.edit-form h5 {
+    color: #5959c5;
+    margin: 10px 0;
+}
+
+.admin-container {
+    padding: 20px;
+    background: #0a0a0a;
+    min-height: 100vh;
+}
+
+.admin-container h1 {
+    color: #5959c5;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.exit-button {
+    float: right;
+    background: #2a2a2a;
+    color: #a3abe8;
+    border: 1px solid #5959c5;
+}
+
+.exit-button:hover {
+    background: #5959c5;
+    color: #0a0a0a;
+}
