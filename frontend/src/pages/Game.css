@@ -10,6 +10,27 @@ body {
     color: #a3abe8;
 }
 
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+}
+
+.start-screen h1 {
+    margin-bottom: 40px;
+    font-size: 48px;
+    letter-spacing: 5px;
+}
+
+.start-screen button {
+    padding: 20px 60px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
 .settings-screen, .question-screen, .result-screen {
     max-width: 600px;
     margin: 30px auto;

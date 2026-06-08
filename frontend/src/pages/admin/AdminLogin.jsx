@@ -1,24 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { adminApi } from "../../api";
 import "./Admin.css"
-
-async function verifyPassword(password) {
-    const formData = new FormData();
-    formData.append('password', password);
-    
-    const response = await fetch('/api/admin_login', {
-        method: 'POST',
-        body: formData,
-        credentials: 'include'
-    });
-    
-    if (response.ok) {
-        return { success: true };
-    } 
-    else {
-        const data = await response.json();
-        return { success: false, error: data.error };
-    }
-}
 
 function AdminLogin({ onLogin, onBack }) {
     const [password, setPassword] = useState('');
@@ -30,13 +12,12 @@ function AdminLogin({ onLogin, onBack }) {
         setLoading(true);
         setError('');
         
-        const result = await verifyPassword(password);
-        
-        if (result.success) {
+        try {
+            await adminApi.adminLogin(password);
             onLogin();
         } 
-        else {
-            setError(result.error || 'Неверный пароль');
+        catch (err) {
+            setError(err.message || 'Неверный пароль');
         }
         
         setLoading(false);
@@ -45,11 +26,8 @@ function AdminLogin({ onLogin, onBack }) {
     return (
         <div style={{ padding: '20px', textAlign: 'center' }}>
             <h2>Вход в админку</h2>
-            <button 
-                onClick={onBack} 
-                style={{ marginBottom: '20px' }}
-            >
-                ← Назад в игру
+            <button onClick={onBack} style={{ marginBottom: '20px' }}>
+                Назад в игру
             </button>
             
             <form onSubmit={handleSubmit}>

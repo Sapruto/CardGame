@@ -126,3 +126,28 @@
     background: #5959c5;
     color: #0a0a0a;
 }
+
+
+.admin-navbar button {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.admin-navbar button:hover {
+    background-color: #6787d1;
+    color: rgb(0, 0, 0);
+}
+
+.admin-navbar button.active {
+    background-color: #141c6b;
+    color: white;
+    font-weight: bold;
+}
+
+.admin-navbar button.active:hover {
+    background-color: #03083d;
+}
