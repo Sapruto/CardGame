@@ -57,3 +57,10 @@ class Resources:
 
     ID = "id"
     BG_PATH = "bg_path"
+
+class Epilogs:
+    TABLE = "epilogs"
+
+    ID = "id"
+    TEXT = "text"
+    STATS_TO_RUN = "stats"

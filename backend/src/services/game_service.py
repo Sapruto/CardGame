@@ -1,16 +1,19 @@
 import json
-from typing import List, Dict, Any
+from typing import List, Dict, Any, TypedDict, Literal, Union
 from dataclasses import dataclass
 import logging
 import random
-from xml.dom.pulldom import CHARACTERS
-
 from src.base.orm.mainBD import BearSQL, Operators
 from src.base.Config import *
 
 from src.api.requests.game_requests import *
 
 logger = logging.getLogger(__name__)
+
+class EpilogCondition(TypedDict):
+    metric: str
+    operator: Literal[">", "<", ">=", "<=", "=="]
+    value: int
 
 @dataclass
 class Question:
@@ -24,6 +27,13 @@ class Character:
     name: str
     stats: Dict[str, int]
 
+StatsToRun = Union[EpilogCondition, List[EpilogCondition]]
+@dataclass
+class Epilog:
+    id: int
+    text: str
+    stats: StatsToRun
+
 class GameService:
     def __init__(self, db_path: dict = Constants.db_path, bd: BearSQL = None):
         self.db_path = db_path
@@ -31,8 +41,51 @@ class GameService:
 
         self.all_characters: List[Character] = []
         self.all_questions: List[Question] = []
+        self.all_epilogs: List[Epilog] = []
 
         self.load_all()
+
+    def _load_epilogs(self):
+        raw_epilogs = self.bd.get(
+            columns=f"{Epilogs.ID}, {Epilogs.TEXT}, {Epilogs.STATS_TO_RUN}",
+            table=Epilogs.TABLE
+        )
+
+        if not raw_epilogs:
+            logger.warning("No epilogs found in database")
+            return
+
+        for raw_epilog in raw_epilogs:
+            epilog_id = raw_epilog[0]
+            text = raw_epilog[1]
+            stats_to_run_json = raw_epilog[2]
+
+            stats_to_run = None
+            if stats_to_run_json:
+                parsed = json.loads(stats_to_run_json)
+
+                if isinstance(parsed, dict):
+                    stats_to_run = EpilogCondition(
+                        metric=parsed.get('metric', ''),
+                        operator=parsed.get('operator', '>'),
+                        value=parsed.get('value', 0)
+                    )
+                elif isinstance(parsed, list):
+                    stats_to_run = [
+                        EpilogCondition(
+                            metric=cond.get('metric', ''),
+                            operator=cond.get('operator', '>'),
+                            value=cond.get('value', 0)
+                        )
+                        for cond in parsed
+                    ]
+            if stats_to_run:
+                epilog = Epilog(
+                    id=epilog_id,
+                    text=text,
+                    stats_to_run=stats_to_run
+                )
+                self.all_epilogs.append(epilog)
 
     def _load_answers_to_question(self, question: Question = None):
         if not question:

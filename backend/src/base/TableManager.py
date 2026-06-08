@@ -1,11 +1,11 @@
 import json
 from typing import List, Union, Optional, Tuple
-import logging
+from logging import getLogger
 
 from src.base.orm.mainBD import BearSQL, DataTypes, Operators
 from src.base.Config import *
 
-logger = logging.getLogger(__name__)
+logger = getLogger(__name__)
 
 class InitTables:
     def __init__(self, db_path: dict = Constants.db_path, bd: BearSQL = None):
@@ -47,6 +47,12 @@ class InitTables:
             Resources.TABLE: {
                 Resources.ID: DataTypes.ID,
                 Resources.BG_PATH: DataTypes.STRING
+            },
+
+            Epilogs.TABLE: {
+                Epilogs.ID: DataTypes.ID,
+                Epilogs.TEXT: DataTypes.STRING,
+                Epilogs.STATS_TO_RUN: DataTypes.JSON
             }
         }
 
